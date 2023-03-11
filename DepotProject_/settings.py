@@ -13,7 +13,8 @@ commit
 """
 
 from pathlib import Path
-
+import os
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -80,16 +81,20 @@ WSGI_APPLICATION = 'DepotProject_.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Depot_mouh',
-        'USER':'postgres',
-        'PASSWORD':'root',
-        'HOST':'localhost',
-        'PORT':'5432',
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'Depot_mouh',
+#        'USER':'postgres',
+#        'PASSWORD':'root',
+#        'HOST':'localhost',
+#        'PORT':'5432',
         
-    }
+#    }
+#}
+
+DATABASES= {
+    "default":dj_database_url.parse("postgres://depotdb_user:UwgI0hmkjUR7kaocp2PxGRQxpMEWe5r5@dpg-cg6ee3pmbg5ab7kcqqug-a.oregon-postgres.render.com/depotdb")
 }
 
 

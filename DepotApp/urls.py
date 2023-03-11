@@ -5,7 +5,7 @@ from django.contrib.auth.views import LoginView
 
 
 urlpatterns = [
-    path('Depots/' , views.AllDepot,name='depots'),
+    path('' , views.AllDepot,name='depots'),
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('AllProduct/<int:id>', views.AlLProduct, name='AllProduct'),
     path('Allhistorique/<int:id>', views.AlLHistorique, name='Allhistorique'),

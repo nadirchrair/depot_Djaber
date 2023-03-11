@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="main-content-inner">
+    <!-- sales report area start -->
+    <div class="sales-report-area mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 text-center ">
+                <div class="single-report mb-xs-30">
+                    <!-- <div class="s-report-inner  mb-3">
+                        <div class="s-report-title d-flex justify-content-between">
+                            <h4 class="header-title mb-0">Stock Name</h4>
+                        </div>
+                    </div> -->
+                    <a href="./AddDepot.html">
+                        <i class="fa fa-plus" aria-hidden="true"
+                            style="height: 100px; font-size:200px;color:#8914fe "></i>
+                    </a>
+                </div>
+            </div>
+            {% for dep in depot %}
+            <div class="col-md-3 text-center ">
+                <div class="single-report mb-xs-30">
+                    <h1>{{dep.nom}}</h1>
+                    <a href="{% url 'AllProduct' dep.id %}"> <i class="fa fa-archive" aria-hidden="true"
+                            style="height: 100px; font-size:145px;color:#8914fe"></i></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

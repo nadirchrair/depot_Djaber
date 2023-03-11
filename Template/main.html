@@ -1,0 +1,33 @@
+{% block navbar %}
+
+<div class="page-title-area">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <div class="breadcrumbs-area clearfix">
+                <a href="{% url 'depots' %}">
+                    <h4 class="page-title pull-left">Djaber Mohamed</h4>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6 clearfix">
+            <div class="user-profile pull-right">
+                <img class="avatar user-thumb" src="" alt="avatar">
+                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ user.username }} <i
+                        class="fa fa-angle-down"></i>
+                </h4>
+                <div class="dropdown-menu">{% if user.is_superuser %}
+                    <a class="dropdown-item" href="{% url 'AllOperation' %}">Operation</a>
+                    <a class="dropdown-item" href="{% url 'AllAdmin'  %}">Admin</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                    {% else %}
+                    <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                    {% endif %}
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock navbar %}

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-lg-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        aria-controls="home" aria-selected="true">Stock</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                        aria-controls="profile" aria-selected="false">Historique</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-3" id="myTabContent">
+                <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <a href="{% url 'AjouterProduit' depot.id %}"> <input type="button" value="ajouter Produit"
+                            class="btn  btn-primary">
+                    </a>
+
+                    <div class="col-12 mt-0">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h4 class="header-title">Stock Table</h4>
+                                <div class="single-table">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover progress-table text-center">
+                                            <thead class="text-uppercase">
+                                                <tr>
+                                                    <th scope="col">Depot</th>
+                                                    <th scope="col">Category</th>
+                                                    <th scope="col">Designation</th>
+                                                    <th scope="col">Quantity Initiale</th>
+                                                    <th scope="col">Quantity Act</th>
+                                                    <th scope="col">Quantity Vendue</th>
+                                                    <th scope="col">Prix U TTC</th>
+                                                    <th scope="col">Prix V TTC</th>
+                                                    <th scope="col">Total D'achat</th>
+                                                    <th scope="col">Total vente TTc</th>
+                                                    <th scope="col">Benifice</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for pro in produit %}
+                                                <tr>
+                                                    <td>{{pro.depot}} {{pro.depot.address}}</td>
+                                                    <td>{{pro.category}}</td>
+                                                    <td> {{pro.designation}}</td>
+                                                    <td>{{pro.quantity_Init}}</td>
+                                                    <td>{{pro.quantity_Act}}</td>
+                                                    <td>{{pro.quantity_Vend}}</td>
+                                                    <td>{{pro.prix_u_TTC}}</td>
+                                                    <td>{{pro.prix_vente_TTC}}</td>
+                                                    <td>{{pro.total_achat}}</td>
+                                                    <td>{{pro.total_vendu}}</td>
+                                                    <td>{{pro.benefice}}</td>
+                                                    <td>
+                                                        <ul class="d-flex justify-content-center">
+                                                            <li class="mr-3"><a
+                                                                    href="{% url 'modificationProduct' pro.id %}"
+                                                                    class="text-secondary"><i
+                                                                        class="fa fa-edit"></i></a></li>
+
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div>
+                        <a href="{% url 'Allhistorique' depot.id %}">All Vente</a>
+                    </div>
+                    <div class="col-12 mt-0">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Vente Table</h4>
+                                <div class="single-table">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover progress-table text-center">
+                                            <thead class="text-uppercase">
+                                                <tr>
+                                                    <th scope="col">Designation</th>
+                                                    <th scope="col"> quatité</th>
+                                                    <th scope="col">prix de vente </th>
+                                                    <th scope="col"> date </th>
+                                                    <th scope="col">action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for vent in vente %}
+                                                <tr>
+                                                    <th scope="row">{{vent.produit}}</th>
+                                                    <td>{{vent.quantity_Vendu}}</td>
+                                                    <td>{{vent.total_vente}}</td>
+                                                    <td>{{vent.vendu_at }}</td>
+                                                    <td>
+                                                        <ul class="d-flex justify-content-center">
+                                                            <li class="mr-3"><a href="#" class="text-secondary"><i
+                                                                        class="fa fa-edit"></i></a></li>
+                                                            <li><a href="#" class="text-danger"><i
+                                                                        class="ti-trash"></i></a></li>
+                                                        </ul>
+                                                    </td>
+
+
+                                                </tr>
+                                                {% endfor %}
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center;" class="mt-4">Ajouter Operation</h1>
+
+<div style="width: 80%;margin-left:80px;" class="mt-3 mb-3">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3" style="width: 30%;">
+            <label class="form-label">{{ form.Point_Depart.label_tag }}</label>
+            {{ form.Point_Depart}}
+        </div>
+        <div class="mb-3 " style="width: 25%; position:absolute;top:25.5%; left:35%;">
+            <label class="form-label">{{ form.Point_darrivée.label_tag }}</label>
+            {{form.Point_darrivée}}
+        </div>
+        <div class="mb-3" style="width: 15%; position:absolute;top:25.5%; left:70%;">
+
+            <label class="form-label">{{form.prix_Transport.label_tag}} </label>
+            {{form.prix_Transport}}
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">{{form.clarque.label_tag}} </label>
+            {{form.clarque}}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">{{form.date_depart.label_tag}} </label>
+            {{form.date_depart}}
+        </div>
+        <div class="mb-3">
+            <label class="form-label"> {{form.prix_de_facture.label_tag}} </label>
+            {{form.prix_de_facture}}
+        </div>
+        <div class="mb-3">
+            <label class="form-label"> {{form.Pallete.label_tag}} </label>
+            {{form.Pallete}}
+        </div>
+        <button type="submit" class="btn btn-primary btn">Submit</button>
+    </form>
+</div>
+{% endblock content %}

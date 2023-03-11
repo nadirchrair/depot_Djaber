@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<a href="{% url 'register' %}"> <input type="button" value="add Admin" class="btn btn-rounded btn-primary  mt-5 ml-4 "
+        style="font-size: 20px;">
+</a>
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Admin Table</h4>
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table class="table table-hover progress-table text-center">
+                        <thead class="text-uppercase">
+                            <tr>
+                                <th scope="col">username</th>
+                                <th>depot</th>
+                                <th scope="col">action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for u in user %}
+                            <tr>
+                                <th scope="row">{{u.username}}</th>
+                                <td>{{u.depot}}</td>
+
+                                <td>
+                                    <ul class="d-flex justify-content-center">
+                                        <li class="mr-3"><a href="#" class="text-secondary"><i
+                                                    class="fa fa-edit"></i></a></li>
+                                        <li><a href="#" class="text-danger"><i class="ti-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

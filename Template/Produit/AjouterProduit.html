@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="text-align: center;" class="mt-4">Ajouter produit</h1>
+<div style="width: 80%;margin-left:80px;" class="mt-3 mb-3">
+    <form method="post">
+        {% csrf_token %}
+        <div style="visibility: hidden; display:none;">
+            <label>{{ form.depot.label_tag }}</label>
+            {{form.depot}}
+        </div>
+        <div class="mb-3" style="width: 30%;">
+            <label>{{ form.category.label_tag }}</label>
+            {{form.category}}
+        </div>
+        <div class="mb-3 " style="width: 25%; position:absolute;top:25.5%; left:35%;">
+            <label class="form-label"> {{ form.designation.label_tag }}</label>
+            {{form.designation}}
+        </div>
+        <div class="mb-3" style="width: 20%; position:absolute;top:25.5%; left:65%;">
+            <label class="form-label"> {{ form.quantity_Init.label_tag }}</label>
+            {{form.quantity_Init}}
+        </div>
+        <div class="mb-3" style="width: 30%;">
+            <label class="form-label"> {{ form.prix_u_TTC.label_tag }}</label>
+            {{form.prix_u_TTC}}
+        </div>
+        <div class="mb-3" style="width: 25%; position:absolute;top:39.5%; left:35%;">
+            <label class="form-label"> {{ form.prix_vente_TTC.label_tag }}</label>
+            {{form.prix_vente_TTC}}
+        </div>
+
+        <div class="mb-3" style="width: 20%; position:absolute;top:39.5%; left:65%;">
+
+        </div>
+
+        <button type="submit" class="btn btn-primary btn">Submit</button>
+    </form>
+</div>
+{% endblock content %}

@@ -38,7 +38,7 @@ class Produit(models.Model):
         if self.total_vendu ==0 :
             self.benefice=0
         else  :  
-         self.benefice =  self.total_achat -self.total_vendu 
+         self.benefice = self.total_vendu - (self.quantity_Vend *self.prix_u_TTC)  
         super(Produit,self).save(*args, **kwargs)
     def __str__(self):
         return self.designation
@@ -55,7 +55,8 @@ class Vente(models.Model):
         if self.produit.quantity_Act < self.quantity_Vendu:
             raise ValidationError('The quantity sold is greater than the available quantity.')
         else:
-            self.produit.quantity_Vend = self.produit.quantity_Init - self.quantity_Vendu
+            
+            self.produit.quantity_Vend =  self.quantity_Vendu+self.produit.quantity_Vend
             self.produit.save()
             super(Vente, self).save(*args, **kwargs)
             

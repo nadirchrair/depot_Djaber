@@ -77,6 +77,8 @@ def modifier_produit(request,id):
 def AlLProduct(request,id):
     depot = Depot.objects.get(id=id)
     produit=  Produit.objects.filter(depot = depot)
+    myfilter1 = ProduitFilter(request.GET,queryset=produit)
+    produit=myfilter1.qs
     now = datetime.today()
     vent= Vente.objects.filter(produit__depot=depot,vendu_at=now)
     
@@ -85,6 +87,7 @@ def AlLProduct(request,id):
         'produit':produit,
         'depot':depot,
         'vente': vent,
+        'filter_form':myfilter1,
     }    
     return render(request,'Produit/AllProduct.html',product)
 @login_required(login_url='/login')

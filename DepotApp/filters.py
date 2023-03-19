@@ -11,3 +11,10 @@ class OperationFilter(django_filters.FilterSet):
         model = Vente
         fields = '__all__'
         exclude=['vendu_at']
+        
+        
+class ProduitFilter(django_filters.FilterSet):
+
+    class Meta:
+        model = Produit
+        fields = ['category','designation']

@@ -11,6 +11,7 @@ urlpatterns = [
     path('Allhistorique/<int:id>', views.AlLHistorique, name='Allhistorique'),
     path('AllProduct/<int:id>/AjouterProduit/', views.AjouterProduit, name='AjouterProduit'),
     path('AllProduct/<int:id>/modificationProduct', views.modifier_produit, name='modificationProduct'),
+    path('AllProduct/<int:id>/delete', views.delete_produit, name='deleteproduct'),
     path('AllOperation/', views.AllOperation, name='AllOperation'),
     path('modificationIperation/<int:id>', views.modificationOperation, name='modificationOperation'),
     path('AjouterOperation/', views.AjouterOperatione, name='AjouterOperation'),

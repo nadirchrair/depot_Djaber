@@ -18,3 +18,4 @@ class ProduitFilter(django_filters.FilterSet):
     class Meta:
         model = Produit
         fields = ['category','designation']
+        

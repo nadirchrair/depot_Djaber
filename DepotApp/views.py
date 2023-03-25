@@ -72,7 +72,11 @@ def modifier_produit(request,id):
         'form':produit_form,
     }    
     return render(request,'Produit/modifie_produit.html',context)
-
+@login_required(login_url='/login')
+def delete_produit(request,id):
+    produit= Produit.objects.get(id=id)
+    produit.delete()
+    return redirect('AllProduct',id=produit.depot.id)  
 @login_required(login_url='/login')
 def AlLProduct(request,id):
     depot = Depot.objects.get(id=id)
